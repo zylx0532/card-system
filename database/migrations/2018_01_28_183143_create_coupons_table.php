@@ -1,2 +1,43 @@
 <?php
-use Illuminate\Support\Facades\Schema; use Illuminate\Database\Schema\Blueprint; use Illuminate\Database\Migrations\Migration; class CreateCouponsTable extends Migration { public function up() { Schema::create('coupons', function (Blueprint $sp758f0c) { $sp758f0c->increments('id'); $sp758f0c->integer('user_id')->index(); $sp758f0c->integer('category_id')->default(-1); $sp758f0c->integer('product_id')->default(-1); $sp758f0c->integer('type')->default(\App\Coupon::TYPE_REPEAT); $sp758f0c->integer('status')->default(\App\Coupon::STATUS_NORMAL); $sp758f0c->string('coupon', 100)->index(); $sp758f0c->integer('discount_type'); $sp758f0c->integer('discount_val'); $sp758f0c->integer('count_used')->default(0); $sp758f0c->integer('count_all')->default(1); $sp758f0c->string('remark')->nullable(); $sp758f0c->dateTime('expire_at')->nullable(); $sp758f0c->timestamps(); }); } public function down() { Schema::dropIfExists('coupons'); } }
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateCouponsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('coupons', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->index();
+            $table->integer('category_id')->default(-1);
+            $table->integer('product_id')->default(-1);
+            $table->integer('type')->default(\App\Coupon::TYPE_REPEAT);
+            $table->integer('status')->default(\App\Coupon::STATUS_NORMAL);
+            $table->string('coupon', 100)->index();
+            $table->integer('discount_type');
+            $table->integer('discount_val');
+            $table->integer('count_used')->default(0); // type 为 TYPE_REPEAT 时, 表示已用次数
+            $table->integer('count_all')->default(1);  // type 为 TYPE_REPEAT 时, 表示可用总次数
+            $table->string('remark')->nullable();
+            $table->dateTime('expire_at')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('coupons');
+    }
+}

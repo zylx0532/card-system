@@ -1,2 +1,33 @@
 <?php
-use Illuminate\Support\Facades\Schema; use Illuminate\Database\Schema\Blueprint; use Illuminate\Database\Migrations\Migration; class CreateCardOrderTable extends Migration { public function up() { Schema::create('card_order', function (Blueprint $sp758f0c) { $sp758f0c->increments('id'); $sp758f0c->integer('order_id')->index(); $sp758f0c->integer('card_id'); }); } public function down() { Schema::dropIfExists('card_order'); } }
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateCardOrderTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('card_order', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('order_id')->index();
+            $table->integer('card_id');
+            // $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('card_order');
+    }
+}

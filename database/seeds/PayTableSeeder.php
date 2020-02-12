@@ -1,70 +1,247 @@
 <?php
-use Illuminate\Database\Seeder; class PayTableSeeder extends Seeder { private function initPay() { $spae3141 = new \App\Pay(); $spae3141->name = '支付宝'; $spae3141->img = '/plugins/images/ali.png'; $spae3141->driver = 'Fakala'; $spae3141->way = 'alipay'; $spae3141->comment = 'alipay、alipaywap、wx、wxwap、qq、qqwap'; $spae3141->config = '{
-  "gateway": "https://www.327ka.com",
-  "api_id": "your api_id",
-  "api_key": "your api_key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_PC; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '支付宝'; $spae3141->img = '/plugins/images/ali.png'; $spae3141->driver = 'Fakala'; $spae3141->way = 'alipaywap'; $spae3141->comment = 'alipay、alipaywap、wx、wxwap、qq、qqwap'; $spae3141->config = '{
-  "gateway": "https://www.327ka.com",
-  "api_id": "your api_id",
-  "api_key": "your api_key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_MOBILE; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '微信'; $spae3141->img = '/plugins/images/wx.png'; $spae3141->driver = 'Fakala'; $spae3141->way = 'wx'; $spae3141->comment = 'alipay、alipaywap、wx、wxwap、qq、qqwap'; $spae3141->config = '{
-  "gateway": "https://www.327ka.com",
-  "api_id": "your api_id",
-  "api_key": "your api_key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_PC; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '微信'; $spae3141->img = '/plugins/images/wx.png'; $spae3141->driver = 'Fakala'; $spae3141->way = 'wxwap'; $spae3141->comment = 'alipay、alipaywap、wx、wxwap、qq、qqwap'; $spae3141->config = '{
-  "gateway": "https://www.327ka.com",
-  "api_id": "your api_id",
-  "api_key": "your api_key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_MOBILE; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '支付宝'; $spae3141->img = '/plugins/images/ali.png'; $spae3141->driver = 'Alipay'; $spae3141->way = 'pc'; $spae3141->comment = '支付宝 - 即时到账套餐(企业)V2'; $spae3141->config = '{
+
+use Illuminate\Database\Seeder;
+
+class PayTableSeeder extends Seeder
+{
+
+    private function initPay()
+    {
+        $pay = new \App\Pay;
+        $pay->name = '支付宝';
+        $pay->driver = 'Alipay';
+        $pay->way = 'pc';
+        $pay->comment = '支付宝 - 即时到账套餐(企业)V2';
+        $pay->config = '{
   "partner": "partner",
   "key": "key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '支付宝'; $spae3141->img = '/plugins/images/ali.png'; $spae3141->driver = 'Aliwap'; $spae3141->way = 'wap'; $spae3141->comment = '支付宝 - 高级手机网站支付V4'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '支付宝';
+        $pay->driver = 'Aliwap';
+        $pay->way = 'wap';
+        $pay->comment = '支付宝 - 高级手机网站支付V4';
+        $pay->config = '{
   "partner": "partner",
   "key": "key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '支付宝扫码'; $spae3141->img = '/plugins/images/ali.png'; $spae3141->driver = 'AliAop'; $spae3141->way = 'f2f'; $spae3141->comment = '支付宝 - 当面付'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+
+        $pay = new \App\Pay;
+        $pay->name = '支付宝扫码';
+        $pay->driver = 'AliAop';
+        $pay->way = 'f2f';
+        $pay->comment = '支付宝 - 当面付';
+        $pay->config = '{
   "app_id": "app_id",
   "alipay_public_key": "alipay_public_key",
   "merchant_private_key": "merchant_private_key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '支付宝'; $spae3141->img = '/plugins/images/ali.png'; $spae3141->driver = 'AliAop'; $spae3141->way = 'pc'; $spae3141->comment = '支付宝 - 电脑网站支付 (新)'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '支付宝';
+        $pay->driver = 'AliAop';
+        $pay->way = 'pc';
+        $pay->comment = '支付宝 - 电脑网站支付 (新)';
+        $pay->config = '{
   "app_id": "app_id",
   "alipay_public_key": "alipay_public_key",
   "merchant_private_key": "merchant_private_key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '手机支付宝'; $spae3141->img = '/plugins/images/ali.png'; $spae3141->driver = 'AliAop'; $spae3141->way = 'mobile'; $spae3141->comment = '支付宝 - 手机网站支付 (新)'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '手机支付宝';
+        $pay->driver = 'AliAop';
+        $pay->way = 'mobile';
+        $pay->comment = '支付宝 - 手机网站支付 (新)';
+        $pay->config = '{
   "app_id": "app_id",
   "alipay_public_key": "alipay_public_key",
   "merchant_private_key": "merchant_private_key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '微信扫码'; $spae3141->img = '/plugins/images/wx.png'; $spae3141->driver = 'WeChat'; $spae3141->way = 'NATIVE'; $spae3141->comment = '微信支付 - 扫码'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+
+        $pay = new \App\Pay;
+        $pay->name = '微信扫码';
+        $pay->driver = 'WeChat';
+        $pay->way = 'NATIVE';
+        $pay->comment = '微信支付 - 扫码';
+        $pay->config = '{
   "APPID": "APPID",
   "APPSECRET": "APPSECRET",
   "MCHID": "商户ID",
   "KEY": "KEY"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '微信H5'; $spae3141->img = '/plugins/images/wx.png'; $spae3141->driver = 'WeChat'; $spae3141->way = 'MWEB'; $spae3141->comment = '微信支付 - H5 (需要开通权限)'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '微信扫码';
+        $pay->driver = 'WeChat';
+        $pay->way = 'JSAPI';
+        $pay->comment = '微信支付 - 扫码';
+        $pay->config = '{
   "APPID": "APPID",
   "APPSECRET": "APPSECRET",
   "MCHID": "商户ID",
   "KEY": "KEY"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '手机QQ'; $spae3141->img = '/plugins/images/qq.png'; $spae3141->driver = 'QPay'; $spae3141->way = 'NATIVE'; $spae3141->comment = '手机QQ - 扫码'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '微信H5';
+        $pay->driver = 'WeChat';
+        $pay->way = 'MWEB';
+        $pay->comment = '微信支付 - H5 (需要开通权限)';
+        $pay->config = '{
+  "APPID": "APPID",
+  "APPSECRET": "APPSECRET",
+  "MCHID": "商户ID",
+  "KEY": "KEY"
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '手机QQ';
+        $pay->driver = 'QPay';
+        $pay->way = 'NATIVE';
+        $pay->comment = '手机QQ - 扫码';
+        $pay->config = '{
   "mch_id": "mch_id",
   "mch_key": "mch_key"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '支付宝'; $spae3141->img = '/plugins/images/ali.png'; $spae3141->driver = 'Youzan'; $spae3141->way = 'alipay'; $spae3141->comment = '有赞支付 - 支付宝'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '支付宝';
+        $pay->driver = 'Youzan';
+        $pay->way = 'alipay';
+        $pay->comment = '有赞支付 - 支付宝';
+        $pay->config = '{
   "client_id": "client_id",
   "client_secret": "client_secret",
   "kdt_id": "kdt_id"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '微信'; $spae3141->img = '/plugins/images/wx.png'; $spae3141->driver = 'Youzan'; $spae3141->way = 'wechat'; $spae3141->comment = '有赞支付 - 微信'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '微信';
+        $pay->driver = 'Youzan';
+        $pay->way = 'wechat';
+        $pay->comment = '有赞支付 - 微信';
+        $pay->config = '{
   "client_id": "client_id",
   "client_secret": "client_secret",
   "kdt_id": "kdt_id"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '手机QQ'; $spae3141->img = '/plugins/images/qq.png'; $spae3141->driver = 'Youzan'; $spae3141->way = 'qq'; $spae3141->comment = '有赞支付 - 手机QQ'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '手机QQ';
+        $pay->driver = 'Youzan';
+        $pay->way = 'qq';
+        $pay->comment = '有赞支付 - 手机QQ';
+        $pay->config = '{
   "client_id": "client_id",
   "client_secret": "client_secret",
   "kdt_id": "kdt_id"
-}'; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '支付宝'; $spae3141->img = '/plugins/images/ali.png'; $spae3141->driver = 'CodePay'; $spae3141->way = 'alipay'; $spae3141->comment = '码支付 - 支付宝'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '支付宝';
+        $pay->driver = 'CodePay';
+        $pay->way = 'alipay';
+        $pay->comment = '码支付 - 支付宝';
+        $pay->config = '{
   "id": "id",
   "key": "key"
-}'; $spae3141->fee_system = 0; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '微信'; $spae3141->img = '/plugins/images/wx.png'; $spae3141->driver = 'CodePay'; $spae3141->way = 'weixin'; $spae3141->comment = '码支付 - 微信'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->fee_system = 0;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '微信';
+        $pay->driver = 'CodePay';
+        $pay->way = 'weixin';
+        $pay->comment = '码支付 - 微信';
+        $pay->config = '{
   "id": "id",
   "key": "key"
-}'; $spae3141->fee_system = 0; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); $spae3141 = new \App\Pay(); $spae3141->name = '手机QQ'; $spae3141->img = '/plugins/images/qq.png'; $spae3141->driver = 'CodePay'; $spae3141->way = 'qq'; $spae3141->comment = '码支付 - 手机QQ'; $spae3141->config = '{
+}';
+        $pay->enabled = true;
+        $pay->fee_system = 0;
+        $pay->save();
+
+        $pay = new \App\Pay;
+        $pay->name = '手机QQ';
+        $pay->driver = 'CodePay';
+        $pay->way = 'qq';
+        $pay->comment = '码支付 - 手机QQ';
+        $pay->config = '{
   "id": "id",
   "key": "key"
-}'; $spae3141->fee_system = 0; $spae3141->enabled = \App\Pay::ENABLED_DISABLED; $spae3141->save(); } public function run() { self::initPay(); } }
+}';
+        $pay->enabled = true;
+        $pay->fee_system = 0;
+        $pay->save();
+
+        $payway = new \App\PayWay;
+        $payway->name = '前台支付方式-支付宝';
+        $payway->img = '/plugins/images/ali.png';
+        $payway->enabled = \App\PayWay::ENABLED_PC;
+        $payway->channels = [[\App\Pay::where('driver', 'AliAop')->where('way', 'pc')->first()->id, 1]];
+        $payway->saveOrFail();
+
+        $payway = new \App\PayWay;
+        $payway->name = '前台支付方式-支付宝手机';
+        $payway->img = '/plugins/images/ali.png';
+        $payway->enabled = \App\PayWay::ENABLED_MOBILE;
+        $payway->channels = [[\App\Pay::where('driver', 'AliAop')->where('way', 'mobile')->first()->id, 1]];
+        $payway->saveOrFail();
+
+        $payway = new \App\PayWay;
+        $payway->name = '前台支付方式-微信';
+        $payway->img = '/plugins/images/wx.png';
+        $payway->enabled = \App\PayWay::ENABLED_PC;
+        $payway->channels = [[\App\Pay::where('driver', 'WeChat')->where('way', 'NATIVE')->first()->id, 1]];
+        $payway->saveOrFail();
+
+        $payway = new \App\PayWay;
+        $payway->name = '前台支付方式-微信手机';
+        $payway->img = '/plugins/images/wx.png';
+        $payway->enabled = \App\PayWay::ENABLED_MOBILE;
+        $payway->channels = [[\App\Pay::where('driver', 'WeChat')->where('way', 'JSAPI')->first()->id, 1]];
+        $payway->saveOrFail();
+
+        $payway = new \App\PayWay;
+        $payway->name = '前台支付方式-QQ';
+        $payway->img = '/plugins/images/qq.png';
+        $payway->enabled = \App\PayWay::ENABLED_ALL;
+        $payway->channels = [[\App\Pay::where('driver', 'QPay')->first()->id, 1]];
+        $payway->saveOrFail();
+    }
+
+    public function run()
+    {
+        self::initPay();
+    }
+}

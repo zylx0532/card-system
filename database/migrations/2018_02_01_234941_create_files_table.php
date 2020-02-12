@@ -1,2 +1,36 @@
 <?php
-use Illuminate\Support\Facades\Schema; use Illuminate\Database\Schema\Blueprint; use Illuminate\Database\Migrations\Migration; use Illuminate\Support\Facades\DB; class CreateFilesTable extends Migration { public function up() { Schema::create('files', function (Blueprint $sp758f0c) { $sp758f0c->increments('id'); $sp758f0c->integer('user_id'); $sp758f0c->string('driver'); $sp758f0c->string('path'); $sp758f0c->string('url'); $sp758f0c->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP')); }); } public function down() { Schema::dropIfExists('files'); } }
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
+
+class CreateFilesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('files', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->string('driver');
+            $table->string('path');
+            $table->string('url');
+            $table->timestamp('created_at')->useCurrent();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('files');
+    }
+}
